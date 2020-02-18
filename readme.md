@@ -1,9 +1,9 @@
 # Handwerker
 
-[![Build Status](https://travis-ci.org/EresDev/Handwerker.svg?branch=master)](https://travis-ci.org/EresDev/Handwerker)
+[![Build Status](https://travis-ci.org/EresDev/HandwerkerFullstack.svg?branch=master)](https://travis-ci.org/EresDev/HandwerkerFullstack)
 
 
-This is a RESTful API for job posting application. It includes authentication, authorization, internationalization, and CRUD for Jobs with Categories. 
+A web application to post jobs to find craftsmen online. It includes authentication, authorization, internationalization, and CRUD for Jobs with Categories. 
 
 The purpose of the application was to practice Hexagonal Architecture, Chicago Style Test-driven development, and CQRS. 
 
