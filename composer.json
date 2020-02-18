@@ -17,6 +17,7 @@
         "symfony/polyfill-uuid": "^1.13",
         "symfony/translation": "4.3.*",
         "symfony/validator": "4.3.*",
+        "symfony/webpack-encore-bundle": "^1.7",
         "symfony/yaml": "4.3.*"
     },
     "require-dev": {
