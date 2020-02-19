@@ -3,6 +3,15 @@ api_login_check:
     en: /login_check
     de: /login_check
 
+homePage:
+  path:
+    en: /
+    de: /
+  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController
+  methods: [get]
+  defaults:
+    template: home.html.twig
+
 createUser:
     path:
       en: /user
