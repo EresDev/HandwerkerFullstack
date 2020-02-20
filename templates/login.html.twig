@@ -1,0 +1,55 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <!-- Two -->
+    <section id="two">
+        <div class="inner">
+            <article>
+                <div class="content">
+                    <header>
+                        <h3>Login</h3>
+                    </header>
+                    <form method="post" action="#">
+                        <div class="field">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" />
+                        </div>
+                        <div class="field">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" />
+                        </div>
+                        <ul class="actions">
+                            <li><input type="submit" value="Login" class="alt" /></li>
+                        </ul>
+                    </form>
+                </div>
+            </article>
+            <article class="alt">
+                <div class="content">
+                    <header>
+                        <h3>Register</h3>
+                    </header>
+                    <form method="post" action="#">
+                        <div class="field">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" />
+                        </div>
+                        <div class="field">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" />
+                        </div>
+                        <div class="field">
+                            <label for="cpassword">Confirm Password</label>
+                            <input type="password" name="cpassword" id="cpassword" />
+                        </div>
+                        <ul class="actions">
+                            <li><input type="submit" value="Register" class="alt" /></li>
+                        </ul>
+                    </form>
+                </div>
+            </article>
+        </div>
+    </section>
+{% endblock %}
