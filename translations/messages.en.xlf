@@ -16,6 +16,42 @@
                 <source>uuid.invalid.format</source>
                 <target>The provided UUID is not valid.</target>
             </trans-unit>
+
+            <!-- Login page -->
+            <trans-unit id="messages4">
+                <source>Register</source>
+                <target>Register</target>
+            </trans-unit>
+            <trans-unit id="messages5">
+                <source>Login</source>
+                <target>Login</target>
+            </trans-unit>
+            <trans-unit id="messages6">
+                <source>Email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="messages7">
+                <source>Confirm Password</source>
+                <target>Confirm Password</target>
+            </trans-unit>
+            <trans-unit id="messages8">
+                <source>Register</source>
+                <target>Register</target>
+            </trans-unit>
+            <trans-unit id="messages9">
+                <source>Password</source>
+                <target>Password</target>
+            </trans-unit>
+
+            <!-- menu -->
+            <trans-unit id="messages10">
+                <source>Home</source>
+                <target>Home</target>
+            </trans-unit>
+            <trans-unit id="messages11">
+                <source>Jobs</source>
+                <target>Jobs</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

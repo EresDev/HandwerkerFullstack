@@ -4,24 +4,24 @@
 
 {% block content %}
     <!-- Two -->
-    <section id="two">
+    <section id="two" class="background">
         <div class="inner">
             <article>
                 <div class="content">
                     <header>
-                        <h3>Login</h3>
+                        <h3>{{ 'Login' | trans }}</h3>
                     </header>
-                    <form method="post" action="#">
+                    <form method="post" action="{{ path('login') }}">
                         <div class="field">
-                            <label for="email">Email</label>
-                            <input type="email" name="email" id="email" />
+                            <label for="email">{{ 'Email' | trans }}</label>
+                            <input type="email" name="email" id="email" required/>
                         </div>
                         <div class="field">
-                            <label for="password">Password</label>
-                            <input type="password" name="password" id="password" />
+                            <label for="password">{{ 'Password' | trans }}</label>
+                            <input type="password" name="password" id="password" required minlength="6"/>
                         </div>
                         <ul class="actions">
-                            <li><input type="submit" value="Login" class="alt" /></li>
+                            <li><input type="submit" value="{{'Login' | trans}}" class="alt" /></li>
                         </ul>
                     </form>
                 </div>
@@ -29,23 +29,23 @@
             <article class="alt">
                 <div class="content">
                     <header>
-                        <h3>Register</h3>
+                        <h3>{{ 'Register' | trans }}</h3>
                     </header>
-                    <form method="post" action="#">
+                    <form method="post" action="{{ path('createUser') }}">
                         <div class="field">
-                            <label for="email">Email</label>
-                            <input type="email" name="email" id="email" />
+                            <label for="email">{{'Email' |trans}}</label>
+                            <input type="email" name="email" id="email" required/>
                         </div>
                         <div class="field">
-                            <label for="password">Password</label>
-                            <input type="password" name="password" id="password" />
+                            <label for="password">{{'Password' | trans}}</label>
+                            <input type="password" name="password" id="password" required/>
                         </div>
                         <div class="field">
-                            <label for="cpassword">Confirm Password</label>
-                            <input type="password" name="cpassword" id="cpassword" />
+                            <label for="cpassword">{{'Confirm Password' | trans}}</label>
+                            <input type="password" name="cpassword" id="cpassword" required minlength="6"/>
                         </div>
                         <ul class="actions">
-                            <li><input type="submit" value="Register" class="alt" /></li>
+                            <li><input type="submit" value="{{'Register' | trans}}" class="alt" /></li>
                         </ul>
                     </form>
                 </div>

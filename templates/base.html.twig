@@ -4,7 +4,7 @@
 	templated.co @templatedco
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 -->
-<html>
+<html lang="{{ app.request.getLocale() }}">
 <head>
     <title>{% block title %}{% endblock %}</title>
     <meta charset="utf-8" />
@@ -24,9 +24,9 @@
     <div class="inner">
         <a href="{{ path('home') }}" class="logo">Handwerker</a>
         <nav id="nav">
-            <a href="{{ path('home') }}">Home</a>
-            <a href="generic.html">Jobs</a>
-            <a href="{{ path('login') }}">Login</a>
+            <a href="{{ path('home') }}">{{'Home' | trans}}</a>
+            <a href="generic.html">{{'Jobs'|trans}}</a>
+            <a href="{{ path('login') }}">{{'Login'|trans}}</a>
         </nav>
     </div>
 </header>

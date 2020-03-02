@@ -15,7 +15,7 @@ home:
 login:
   path:
     en: /login
-    de: /login
+    de: /einloggen
   controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController
   methods: [get]
   defaults:
