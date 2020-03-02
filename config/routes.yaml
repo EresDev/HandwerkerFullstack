@@ -6,7 +6,7 @@ api_login_check:
 home:
   path:
     en: /
-    de: /
+    de: /startseite
   controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController
   methods: [get]
   defaults:
