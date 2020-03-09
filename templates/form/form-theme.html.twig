@@ -1,0 +1,15 @@
+{% use "form/parent-form-theme.html.twig" %}
+
+{%- block form_row -%}
+    {%- set row_attr = row_attr|merge({class: (attr.class|default('field'))|trim}) -%}
+    {{- parent() -}}
+{%- endblock form_row -%}
+
+{% block button_widget -%}
+    {%- set attr = attr|merge({class: (attr.class|default('alt'))|trim}) -%}
+    <ul class="actions">
+        <li>
+            {{- parent() -}}
+        </li>
+    </ul>
+{%- endblock button_widget %}

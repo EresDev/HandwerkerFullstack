@@ -4,3 +4,4 @@ twig:
     strict_variables: '%kernel.debug%'
     globals:
         app_name: 'Handwerker'
+    form_themes: ['form/form-theme.html.twig']

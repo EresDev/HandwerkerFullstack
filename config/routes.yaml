@@ -7,7 +7,7 @@ home:
   path:
     en: /
     de: /startseite
-  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController
+  controller: App\Infrastructure\Controller\HomeController:handleRequest
   methods: [get]
   defaults:
     template: home.html.twig
@@ -16,10 +16,15 @@ login:
   path:
     en: /login
     de: /einloggen
-  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController
+  controller: App\Infrastructure\Controller\LoginController:handleRequest
   methods: [get]
-  defaults:
-    template: login.html.twig
+
+loginSuccess:
+  path:
+    en: /login_check/success
+    de: /login_check/success
+  controller: App\Infrastructure\Controller\LoginController:handleRequest
+  methods: [get]
 
 createUser:
     path:
@@ -27,6 +32,8 @@ createUser:
       de: /benutzer
     controller: App\Infrastructure\Controller\RegisterUserController:handleRequest
     methods: [post]
+    defaults:
+      template: home.html.twig
 
 createJob:
   path:

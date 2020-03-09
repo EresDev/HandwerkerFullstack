@@ -8,13 +8,12 @@ use App\Application\Command\RegisterUserCommand;
 use App\Application\CommandHandler\RegisterUserHandler;
 use App\Domain\Exception\ValidationException;
 use App\Domain\ValueObject\Uuid;
-use App\Infrastructure\Service\Http\FailureResponseContent;
-use App\Infrastructure\Service\Http\SuccessResponseContent;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpFoundation\Response;
 
-class RegisterUserController
+class RegisterUserController extends AbstractController
 {
     private Request $request;
     private RegisterUserHandler $handler;
@@ -27,27 +26,30 @@ class RegisterUserController
         $this->handler = $handler;
     }
 
-    public function handleRequest(): JsonResponse
+    public function handleRequest(): Response
     {
         $uuid = Uuid::create();
+        $email = $this->request->get('email', '');
         $command = new RegisterUserCommand(
             $uuid,
-            $this->request->get('email', ''),
+            $email,
             $this->request->get('password', '')
         );
 
         try {
             $this->handler->handle($command);
         } catch (ValidationException $exception) {
-            return JsonResponse::create(
-                new FailureResponseContent($exception->getViolations()),
-                422
+            return $this->render(
+                'login.html.twig',
+                ['violations' => $exception->getViolations()],
+                new Response('', 422)
             );
         }
 
-        return JsonResponse::create(
-            new SuccessResponseContent(['user' => ['uuid' => $uuid->getValue()]]),
-            201
+        return $this->render(
+            'home.html.twig',
+            ['uuid' => $uuid->getValue(), 'email' => $email],
+            new Response('', 201)
         );
     }
 }

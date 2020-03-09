@@ -13,6 +13,14 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
+        api:
+            pattern:   ^/login_check/success
+            stateless: true
+            #anonymous: true
+            guard:
+                authenticators:
+                    - lexik_jwt_authentication.jwt_token_authenticator
+
         login:
             pattern:  ^/login
             stateless: true
@@ -20,20 +28,16 @@ security:
             provider: custom_provider
             form_login:
                 check_path:  /login_check
-                username_parameter: email
-                password_parameter: password
-                success_handler: lexik_jwt_authentication.handler.authentication_success
+                username_parameter: login_form[email]
+                password_parameter: login_form[password]
+                success_handler: App\Infrastructure\Controller\LoginSuccessHandler
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
 
-        api:
-            pattern:   ^/(job|arbeit)
-            stateless: true
-            guard:
-                authenticators:
-                    - lexik_jwt_authentication.jwt_token_authenticator
+
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        - { path: ^/login, roles: !php/const App\Application\Service\Security\Role::ANONYMOUS }
-        - { path: ^/(job|arbeit), roles: !php/const App\Application\Service\Security\Role::USER }
+        #- { path: ^/login, roles: !php/const App\Application\Service\Security\Role::ANONYMOUS }
+        - { path: ^/login_check/success, roles: !php/const App\Application\Service\Security\Role::USER }
+        - { path: ^/login_check/success, roles: ['ROLE_USER'] }

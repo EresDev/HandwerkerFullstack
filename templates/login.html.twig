@@ -1,6 +1,6 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Login{% endblock %}
+{% block title %}{{'Login'|trans}}{% endblock %}
 
 {% block content %}
     <!-- Two -->
@@ -8,22 +8,11 @@
         <div class="inner">
             <article>
                 <div class="content">
+                    <h1>{{ dump(app.user) }}</h1>
                     <header>
                         <h3>{{ 'Login' | trans }}</h3>
                     </header>
-                    <form method="post" action="{{ path('login') }}">
-                        <div class="field">
-                            <label for="email">{{ 'Email' | trans }}</label>
-                            <input type="email" name="email" id="email" required/>
-                        </div>
-                        <div class="field">
-                            <label for="password">{{ 'Password' | trans }}</label>
-                            <input type="password" name="password" id="password" required minlength="6"/>
-                        </div>
-                        <ul class="actions">
-                            <li><input type="submit" value="{{'Login' | trans}}" class="alt" /></li>
-                        </ul>
-                    </form>
+                    {{ form(loginForm) }}
                 </div>
             </article>
             <article class="alt">
