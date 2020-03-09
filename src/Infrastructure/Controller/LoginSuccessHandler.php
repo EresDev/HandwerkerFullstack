@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Controller;
 
+use App\Application\Service\Extension\DateTimeExtension;
 use Lexik\Bundle\JWTAuthenticationBundle\Event\AuthenticationSuccessEvent;
 use Lexik\Bundle\JWTAuthenticationBundle\Events;
 use Lexik\Bundle\JWTAuthenticationBundle\Response\JWTAuthenticationSuccessResponse;
@@ -12,14 +13,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Router;
-use Symfony\Component\Routing\RouterInterface;
-use Symfony\Contracts\EventDispatcher\EventDispatcherInterface as ContractsEventDispatcherInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationSuccessHandlerInterface;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface as ContractsEventDispatcherInterface;
 
 /**
  * AuthenticationSuccessHandler.
@@ -57,7 +56,7 @@ class LoginSuccessHandler extends AbstractController implements AuthenticationSu
         }
 
         $response = new JWTAuthenticationSuccessResponse($jwt);
-        $event    = new AuthenticationSuccessEvent(['token' => $jwt], $user, $response);
+        $event = new AuthenticationSuccessEvent(['token' => $jwt], $user, $response);
 
         if ($this->dispatcher instanceof ContractsEventDispatcherInterface) {
             $this->dispatcher->dispatch($event, Events::AUTHENTICATION_SUCCESS);
@@ -65,18 +64,23 @@ class LoginSuccessHandler extends AbstractController implements AuthenticationSu
             $this->dispatcher->dispatch(Events::AUTHENTICATION_SUCCESS, $event);
         }
 
-        $cookie = new Cookie('Authorization', $jwt);
+        $cookie = new Cookie(
+            'Authorization',
+            $jwt,
+            new DateTimeExtension('+2 hours'),
+            '/',
+            null,
+            true,
+            true,
+            false,
+            Cookie::SAMESITE_STRICT
+        );
+
         $redirectResponse = new RedirectResponse(
             $this->router->generate('loginSuccess')
         );
 
-        //$redirectResponse->headers->set('Authorization', $jwt);
-
         $redirectResponse->headers->setCookie($cookie);
-
-        //$response->setData($event->getData());
-        //$response = new Response('', 200, ['Authorization' => $jwt]);
-        //return $this->render('home.html.twig',[], $response);;
 
         return $redirectResponse;
     }

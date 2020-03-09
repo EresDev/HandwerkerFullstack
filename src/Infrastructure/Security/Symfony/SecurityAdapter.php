@@ -21,4 +21,9 @@ class SecurityAdapter implements Security
     {
         return $this->security->getUser()->getEntity();
     }
+
+    public function isLoggedIn(): bool
+    {
+        return $this->security->isGranted('IS_AUTHENTICATED_FULLY');
+    }
 }

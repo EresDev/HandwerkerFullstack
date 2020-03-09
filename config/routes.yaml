@@ -21,9 +21,9 @@ login:
 
 loginSuccess:
   path:
-    en: /login_check/success
-    de: /login_check/success
-  controller: App\Infrastructure\Controller\LoginController:handleRequest
+    en: /auth/success
+    de: /auth/success
+  controller: App\Infrastructure\Controller\HomeController:handleRequest
   methods: [get]
 
 createUser:
