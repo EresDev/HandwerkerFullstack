@@ -23,7 +23,7 @@ security:
                 check_path:  /login_check
                 username_parameter: login_form[email]
                 password_parameter: login_form[password]
-                success_handler: App\Infrastructure\Controller\LoginSuccessHandler
+                success_handler: App\Infrastructure\Security\Symfony\LoginSuccessHandler
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
 
 
