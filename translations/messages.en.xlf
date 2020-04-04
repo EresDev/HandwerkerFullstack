@@ -52,6 +52,13 @@
                 <source>Jobs</source>
                 <target>Jobs</target>
             </trans-unit>
+
+            <!-- Login Errors -->
+            <trans-unit id="messages12">
+                <source>login.failed.invalid.credentials</source>
+                <target>Login credentials are not valid.</target>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>

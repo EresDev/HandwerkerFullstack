@@ -24,6 +24,17 @@ class LoginControllerTest extends WebTestCase
     /**
      * @dataProvider uriProvider
      */
+    public function testHttpRedirectToHttps(string $uri): void
+    {
+        $this->makeClientForHttp();
+        $this->client->request('get', $uri);
+
+        $this->assertEquals(301, $this->response()->getStatusCode());
+    }
+
+    /**
+     * @dataProvider uriProvider
+     */
     public function testSuccessfulLogin(string $uri): void
     {
         $crawler = $this->client->request('get', $uri);

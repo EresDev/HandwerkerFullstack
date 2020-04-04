@@ -24,7 +24,7 @@ security:
                 username_parameter: login_form[email]
                 password_parameter: login_form[password]
                 success_handler: App\Infrastructure\Security\Symfony\LoginSuccessHandler
-                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+                failure_handler: App\Infrastructure\Security\Symfony\LoginFailureHandler
 
 
         main:
@@ -40,6 +40,6 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        #- { path: ^/login, roles: !php/const App\Application\Service\Security\Role::USER }
+        - { path: ^/, roles: !php/const App\Application\Service\Security\Role::ANONYMOUS, requires_channel: https }
 #        - { path: ^/login, roles: !php/const App\Application\Service\Security\Role::ANONYMOUS }
 #        - { path: ^/auth/success, roles: !php/const App\Application\Service\Security\Role::USER }

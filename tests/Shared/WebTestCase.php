@@ -4,17 +4,23 @@ declare(strict_types=1);
 
 namespace App\Tests\Shared;
 
+use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase as SymfonyWebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
 class WebTestCase extends SymfonyWebTestCase
 {
-    protected $client;
+    protected KernelBrowser $client;
 
     protected function setUp(): void
     {
         self::bootKernel();
-        $this->client = static::createClient();
+        $this->client = static::createClient([],['HTTPS' => true]);
+    }
+
+    protected function makeClientForHttp(): void
+    {
+        $this->client = static::createClient([],['HTTPS' => false]);
     }
 
     protected function getService(string $className): object
