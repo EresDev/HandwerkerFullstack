@@ -28,20 +28,29 @@ class JWTTokenGenerationTest extends KernelTestCase
         $this->request = Request::create(
             '/login_check',
             'POST',
-            ['email' => UserFixture::EMAIL, 'password' => UserFixture::PLAIN_PASSWORD]
+            [
+                'login_form' => [
+                    'email' => UserFixture::EMAIL,
+                    'password' => UserFixture::PLAIN_PASSWORD
+                ]
+            ],
+            [],
+            [],
+            ['HTTPS' => true]
         );
 
         $kernel = self::$kernel;
         $response = $kernel->handle($this->request);
 
         $this->assertEquals(
-            200,
+            302,
             $response->getStatusCode(),
-            'JWT login check, to receive token failed. Got invalid status code.'
+            'JWT login check, to receive token failed. Got invalid http status code.'
         );
-        $this->assertArrayHasKey(
-            'token',
-            json_decode($response->getContent(), true),
+
+        $tokenCookie = $response->headers->all()['set-cookie'][0];
+        $this->assertTrue(
+            0 === strpos($tokenCookie, 'Authorization'),
             "No token received. The content received: \n" .
             $response->getContent()
         );
@@ -52,7 +61,15 @@ class JWTTokenGenerationTest extends KernelTestCase
         $this->request = Request::create(
             '/login_check',
             'POST',
-            ['email' => 'userShouldNotExistInDB@eresdev.com', 'password' => 'somePassword1145236']
+            [
+                'login_form' => [
+                    'email' => 'userShouldNotExistInDB@eresdev.com',
+                    'password' => 'somePassword1145236'
+                ]
+            ],
+            [],
+            [],
+            ['HTTPS' => true]
         );
 
         $kernel = new Kernel('test', true);
