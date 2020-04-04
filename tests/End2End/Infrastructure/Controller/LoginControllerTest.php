@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Functional\Infrastructure\Controller;
+namespace App\Tests\End2End\Infrastructure\Controller;
 
 use App\Tests\Shared\Fixture\UserFixture;
 use App\Tests\Shared\WebTestCase;
