@@ -1,7 +1,7 @@
 api_login_check:
   path:
     en: /login_check
-    de: /login_check
+    de: /login_check_de
 
 home:
   path:

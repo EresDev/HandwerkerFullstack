@@ -15,17 +15,16 @@ security:
 
 
         login:
-            pattern:  ^/login_check
+            pattern:  ^/login_check(_de){0,1}
             stateless: true
             provider: custom_provider
             anonymous: true
             form_login:
-                check_path:  /login_check
+                check_path: api_login_check
                 username_parameter: login_form[email]
                 password_parameter: login_form[password]
                 success_handler: App\Infrastructure\Security\Symfony\LoginSuccessHandler
                 failure_handler: App\Infrastructure\Security\Symfony\LoginFailureHandler
-
 
         main:
             pattern:   ^/
