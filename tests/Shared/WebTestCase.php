@@ -15,12 +15,12 @@ class WebTestCase extends SymfonyWebTestCase
     protected function setUp(): void
     {
         self::bootKernel();
-        $this->client = static::createClient([],['HTTPS' => true]);
+        $this->client = static::createClient([], ['HTTPS' => true]);
     }
 
     protected function makeClientForHttp(): void
     {
-        $this->client = static::createClient([],['HTTPS' => false]);
+        $this->client = static::createClient([], ['HTTPS' => false]);
     }
 
     protected function getService(string $className): object
@@ -41,7 +41,8 @@ class WebTestCase extends SymfonyWebTestCase
         array $server = [],
         string $content = null,
         bool $changeHistory = true
-    ): void {
+    ): void
+    {
         $this->client->request(
             $method,
             $uri,

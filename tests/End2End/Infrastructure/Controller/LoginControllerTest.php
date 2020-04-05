@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\End2End\Infrastructure\Controller;
 
+use App\Tests\Shared\Assert;
 use App\Tests\Shared\Fixture\UserFixture;
 use App\Tests\Shared\WebTestCase;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
@@ -29,7 +30,7 @@ class LoginControllerTest extends WebTestCase
         $this->makeClientForHttp();
         $this->client->request('get', $uri);
 
-        $this->assertEquals(301, $this->response()->getStatusCode());
+        Assert::assertEquals(301, $this->response()->getStatusCode());
     }
 
     /**
@@ -51,6 +52,8 @@ class LoginControllerTest extends WebTestCase
             $this->router->generate('loginSuccess'),
             302
         );
+
+        Assert::assertHasCookie($this->client, 'Authorization');
     }
 
     public function uriProvider(): array
