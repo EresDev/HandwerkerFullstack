@@ -7,9 +7,13 @@ use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 
 abstract class Assert extends PHPUnitAssert
 {
-    public static function assertHasCookie(KernelBrowser $client, string $cookieKey)
+    public static function assertHasCookie(
+        KernelBrowser $client,
+        string $cookieKey,
+        string $message = 'Failed asserting that cookie is present'
+    ): void
     {
         $cookie = $client->getCookieJar()->get($cookieKey);
-        PHPUnitAssert::assertTrue(isset($cookie) && !is_null($cookie));
+        PHPUnitAssert::assertTrue(isset($cookie) && !is_null($cookie), $message);
     }
 }
