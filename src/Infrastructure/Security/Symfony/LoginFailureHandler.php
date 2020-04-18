@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Infrastructure\Security\Symfony;
 
 use App\Infrastructure\Service\Form\Symfony\LoginFormType;
+use App\Infrastructure\Service\Form\Symfony\RegisterFormType;
 use Lexik\Bundle\JWTAuthenticationBundle\Event\AuthenticationFailureEvent;
 use Lexik\Bundle\JWTAuthenticationBundle\Events;
 use Lexik\Bundle\JWTAuthenticationBundle\Response\JWTAuthenticationFailureResponse;
@@ -59,9 +60,16 @@ class LoginFailureHandler implements AuthenticationFailureHandlerInterface
 
         $loginForm->addError(new FormError('login.failed.invalid.credentials'));
 
+        $registerForm = $this->formFactory->createBuilder(RegisterFormType::class, null)
+            ->setAction($this->router->generate('createUser'))
+            ->getForm();
+
         $content = $this->environment->render(
             'login.html.twig',
-            ['loginForm' => $loginForm->createView()]
+            [
+                'loginForm' => $loginForm->createView(),
+                'registerForm' => $registerForm->createView()
+            ]
         );
 
         return new Response($content, 401);
