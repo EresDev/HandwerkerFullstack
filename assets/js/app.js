@@ -13,7 +13,7 @@ import '../css/custom.css';
 // Need jQuery? Install it with "yarn add jquery", then uncomment to import it.
 // import $ from 'jquery';
 
-import './jquery.min';
+const $ = require('jquery');
 import './skel.min';
 import './util';
 

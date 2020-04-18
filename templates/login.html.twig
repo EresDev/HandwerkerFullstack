@@ -1,6 +1,6 @@
 {% extends "base.html.twig" %}
 
-{% block title %}{{'Login'|trans}}{% endblock %}
+{% block title %}{{ 'Login'|trans }}{% endblock %}
 
 {% block content %}
     <!-- Two -->
@@ -25,3 +25,13 @@
         </div>
     </section>
 {% endblock %}
+
+ {% block stylesheets %}
+     {{ parent() }}
+     {{ encore_entry_link_tags('login') }}
+ {% endblock %}
+
+ {% block javascripts %}
+     {{ parent() }}
+     {{ encore_entry_script_tags('login') }}
+ {% endblock %}

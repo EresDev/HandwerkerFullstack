@@ -16,8 +16,16 @@ class RegisterFormType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class)
-            ->add('password', PasswordType::class)
-            ->add('confirm_password', PasswordType::class)
+            ->add(
+                'password',
+                PasswordType::class,
+                ['attr' => ['minlength' => 6, 'maxlength' => 4096]]
+            )
+            ->add(
+                'confirm_password',
+                PasswordType::class,
+                ['attr' => ['minlength' => 6, 'maxlength' => 4096]]
+            )
             ->add('Register', SubmitType::class);
     }
 }
