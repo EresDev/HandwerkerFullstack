@@ -7,19 +7,11 @@ namespace App\Tests\End2End\Infrastructure\Controller;
 use App\Tests\Shared\Fixture\UserFixture;
 use App\Tests\Shared\WebTestCase;
 use Hautelook\AliceBundle\PhpUnit\ReloadDatabaseTrait;
-use Symfony\Component\Routing\RouterInterface;
 
 class RegisterUserControllerTest extends WebTestCase
 {
     use ReloadDatabaseTrait;
-    private RouterInterface $router;
     private const URI = ['en' => 'login', 'de' => 'einloggen'];
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->router = $this->getService(RouterInterface::class);
-    }
 
     /**
      * @dataProvider uriWithSuccessMessageProvider
