@@ -6,6 +6,7 @@ namespace App\Infrastructure\Controller;
 
 use App\Application\Service\Security\Security;
 use App\Infrastructure\Service\Form\Symfony\LoginFormType;
+use App\Infrastructure\Service\Form\Symfony\RegisterFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -19,6 +20,7 @@ class LoginController extends AbstractController
     private Environment $environment;
     private RouterInterface $router;
     private Security $security;
+
 
     public function __construct(
         FormFactoryInterface $formFactory,
@@ -45,9 +47,16 @@ class LoginController extends AbstractController
             ->setAction($this->router->generate('api_login_check'))
             ->getForm();
 
+        $registerForm = $this->formFactory->createBuilder(RegisterFormType::class, null)
+            ->setAction($this->router->generate('createUser'))
+            ->getForm();
+
         $content = $this->environment->render(
             'login.html.twig',
-            ['loginForm' => $loginForm->createView()]
+            [
+                'loginForm' => $loginForm->createView(),
+                'registerForm' => $registerForm->createView()
+            ]
         );
 
         return new Response($content);

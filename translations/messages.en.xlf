@@ -59,6 +59,16 @@
                 <target>Login credentials are not valid.</target>
             </trans-unit>
 
+            <!-- Registration -->
+            <trans-unit id="messages13">
+                <source>register.user.success.message</source>
+                <target>Your account has been created successfully. You can login now.</target>
+            </trans-unit>
+            <trans-unit id="messages14">
+                <source>Confirm password</source>
+                <target>Confirm Password</target>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>
