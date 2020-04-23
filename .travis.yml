@@ -9,6 +9,7 @@ env:
   - SYMFONY_VERSION="4.3.*" DB=mysql
 script:
   - php bin/phpunit
+  - yarn jest
 services:
   - mysql
 install:
