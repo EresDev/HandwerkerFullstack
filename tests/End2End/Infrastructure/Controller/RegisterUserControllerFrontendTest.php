@@ -11,9 +11,7 @@ class RegisterUserControllerFrontendTest extends PantherTestCase
     public function testPasswordAndConfirmPasswordFieldValidWhenSame(): void
     {
         //PantherTestCase::startWebServer();
-        $client =  static::createPantherClient(
-            ['hostname' => 'https://handwerkerfullstack.loc']
-        );
+        $client =  static::createPantherClient();
         $crawler = $client->request('GET', '/login');
 
 //        $form = $crawler->filter('form[name=register_form]')->form();
