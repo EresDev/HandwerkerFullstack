@@ -222,6 +222,7 @@
   <component name="PhpUnit">
     <phpunit_settings>
       <phpunit_by_interpreter interpreter_id="0e7775cd-ca57-4a46-9810-28f4ce280f2c" load_method="PHPUNIT_PHAR" configuration_file_path="/shared/httpd/HandwerkerFullstack/phpunit.xml.dist" custom_loader_path="" phpunit_phar_path="/shared/httpd/HandwerkerFullstack/vendor/symfony/phpunit-bridge/bin/simple-phpunit.php" use_configuration_file="true" />
+      <PhpUnitSettings load_method="PHPUNIT_PHAR" configuration_file_path="$PROJECT_DIR$/phpunit.xml.dist" custom_loader_path="" phpunit_phar_path="$PROJECT_DIR$/bin/phpunit" use_configuration_file="true" />
     </phpunit_settings>
   </component>
   <component name="TwigDebugConfiguration">

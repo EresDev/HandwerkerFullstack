@@ -24,9 +24,6 @@ class RegisterUserControllerFrontendTest extends PantherTestCase
 
 
 
-        $url = 'https://handwerkerfullstack.loc/login';
-
-        $file =  file_get_contents($url);
 
         // Use any PHPUnit assertion, including the ones provided by Symfony
         $this->assertPageTitleContains('Login');
