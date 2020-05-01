@@ -28,7 +28,7 @@ class LoginControllerTest extends WebTestCase
     public function testSuccessfulLogin(string $uri): void
     {
         $crawler = $this->client->request('get', $uri);
-
+        $form = $crawler->html();
         $form = $crawler->filter('form[name=login_form]')->form();
         $values = $form->getPhpValues();
         $values['login_form']['email'] = UserFixture::EMAIL;

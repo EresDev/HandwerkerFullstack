@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig host="localhost" id="9c848411-c8ac-4e41-bfd0-04dddeba5e9d" keyPath="E:\devilbox\data\www\HandwerkerFullstack\ssh\id_rsa" port="2222" customName="Devilbox PHP SSH" nameFormat="CUSTOM" username="devilbox" />
+    </configs>
+  </component>
+</project>

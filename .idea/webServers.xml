@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="6a795612-9698-4a83-8f68-1ae5565a5b8c" name="Devilbox PHP SSH" url="http://handwerkerfullstack.loc/">
+        <fileTransfer rootFolder="/shared/httpd/HandwerkerFullstack/" accessType="SFTP" host="localhost" port="2222" sshConfigId="9c848411-c8ac-4e41-bfd0-04dddeba5e9d" sshConfig="Devilbox PHP SSH" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

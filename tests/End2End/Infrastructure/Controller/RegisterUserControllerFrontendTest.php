@@ -13,8 +13,8 @@ class RegisterUserControllerFrontendTest extends PantherTestCase
         //PantherTestCase::startWebServer();
         $client =  static::createPantherClient();
         $crawler = $client->request('GET', '/login');
-
-//        $form = $crawler->filter('form[name=register_form]')->form();
+//        $html = $crawler->html();
+        //$form = $crawler->filter('form[name=register_form]')->form();
 //        $form->setValues([
 //            'register_form' => [
 //                'password' => '123456',
@@ -22,8 +22,16 @@ class RegisterUserControllerFrontendTest extends PantherTestCase
 //            ]
 //        ]);
 
+
+
+        $url = 'https://handwerkerfullstack.loc/login';
+
+        $file =  file_get_contents($url);
+
         // Use any PHPUnit assertion, including the ones provided by Symfony
         $this->assertPageTitleContains('Login');
         //$this->assertSelectorTextContains('#main', 'My body');
+
+        $this->assertTrue(true);
     }
 }

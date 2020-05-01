@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpDockerContainerSettings">
+    <list>
+      <map>
+        <entry key="3a33f30b-ca11-4f67-830a-fe3fd5afc2d5">
+          <value>
+            <DockerContainerSettings>
+              <option name="version" value="1" />
+              <option name="volumeBindings">
+                <list>
+                  <DockerVolumeBindingImpl>
+                    <option name="containerPath" value="/opt/project" />
+                  </DockerVolumeBindingImpl>
+                </list>
+              </option>
+            </DockerContainerSettings>
+          </value>
+        </entry>
+        <entry key="759b8cf9-11e7-42f9-ad73-abd1075d4136">
+          <value>
+            <DockerContainerSettings>
+              <option name="version" value="1" />
+              <option name="volumeBindings">
+                <list>
+                  <DockerVolumeBindingImpl>
+                    <option name="containerPath" value="/opt/project" />
+                  </DockerVolumeBindingImpl>
+                </list>
+              </option>
+            </DockerContainerSettings>
+          </value>
+        </entry>
+        <entry key="86e6f4c0-ff27-4dc8-9b07-1a72c5b0473c">
+          <value>
+            <DockerContainerSettings>
+              <option name="version" value="1" />
+              <option name="volumeBindings">
+                <list>
+                  <DockerVolumeBindingImpl>
+                    <option name="containerPath" value="/opt/project" />
+                  </DockerVolumeBindingImpl>
+                </list>
+              </option>
+            </DockerContainerSettings>
+          </value>
+        </entry>
+        <entry key="ccd39b77-9fb8-4710-b64d-f88f905892b0">
+          <value>
+            <DockerContainerSettings>
+              <option name="networkMode" value="devilbox_app_net" />
+              <option name="portBindings">
+                <list>
+                  <DockerPortBindingImpl>
+                    <option name="containerPort" value="80" />
+                    <option name="hostIp" value="172.16.238.2" />
+                    <option name="hostPort" value="80" />
+                  </DockerPortBindingImpl>
+                  <DockerPortBindingImpl>
+                    <option name="containerPort" value="443" />
+                    <option name="hostIp" value="172.16.238.2" />
+                    <option name="hostPort" value="443" />
+                  </DockerPortBindingImpl>
+                  <DockerPortBindingImpl>
+                    <option name="containerPort" value="3306" />
+                    <option name="hostIp" value="127.0.0.1" />
+                    <option name="hostPort" value="3306" />
+                  </DockerPortBindingImpl>
+                </list>
+              </option>
+              <option name="version" value="1" />
+              <option name="volumeBindings">
+                <list>
+                  <DockerVolumeBindingImpl>
+                    <option name="containerPath" value="/shared/httpd/HandwerkerFullstack" />
+                    <option name="hostPath" value="$PROJECT_DIR$" />
+                  </DockerVolumeBindingImpl>
+                </list>
+              </option>
+            </DockerContainerSettings>
+          </value>
+        </entry>
+        <entry key="dad31675-e1d0-4fa7-8143-8e09d86336c6">
+          <value>
+            <DockerContainerSettings>
+              <option name="networkMode" value="devilbox_app_net" />
+              <option name="version" value="1" />
+              <option name="volumeBindings">
+                <list>
+                  <DockerVolumeBindingImpl>
+                    <option name="containerPath" value="/shared/httpd/HandwerkerFullstack" />
+                    <option name="hostPath" value="$PROJECT_DIR$" />
+                  </DockerVolumeBindingImpl>
+                </list>
+              </option>
+            </DockerContainerSettings>
+          </value>
+        </entry>
+      </map>
+    </list>
+  </component>
+</project>
