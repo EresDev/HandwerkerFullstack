@@ -12,10 +12,13 @@ use App\Domain\Entity\User;
 use App\Domain\Repository\Job\JobSaver;
 use App\Domain\ValueObject\Uuid;
 use App\Tests\Shared\ObjectMother\JobMother;
+use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 
 class CreateJobHandlerTest extends UpsertJobHandlerBaseTestCase
 {
+    use RefreshDatabaseTrait;
+
     private Validator $validator;
     private MockObject $jobSaver;
     private JobFactoryImpl $jobFactory;
