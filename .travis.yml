@@ -1,3 +1,4 @@
+dist: trusty
 language: php
 sudo: false
 php:
@@ -9,6 +10,10 @@ cache:
     - "$HOME/.composer/cache/files"
 env:
   - SYMFONY_VERSION="4.3.*" DB=mysql
+
+before_install:
+  - # start your web application and listen on `localhost`
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9080 http://localhost &
 script:
   - php bin/phpunit
 services:
