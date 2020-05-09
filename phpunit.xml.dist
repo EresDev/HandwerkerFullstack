@@ -15,8 +15,7 @@
         <server name="SYMFONY_PHPUNIT_VERSION" value="7.5" />
         <env name="PANTHER_CHROME_ARGUMENTS" value="--ignore-certificate-errors --disable-dev-shm-usage"/>
         <env name="PANTHER_NO_HEADLESS" value="false"/>
-        <env name="PANTHER_NO_SANDBOX" value="true"/>
-        <env name="PANTHER_EXTERNAL_BASE_URI" value="http://hwfs.local" />
+        <env name="PANTHER_NO_SANDBOX" value="false"/>
     </php>
 
     <testsuites>
@@ -35,4 +34,7 @@
         <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener" />
     </listeners>
 
+    <extensions>
+        <extension class="Symfony\Component\Panther\ServerExtension" />
+    </extensions>
 </phpunit>

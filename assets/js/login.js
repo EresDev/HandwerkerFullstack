@@ -1,9 +1,7 @@
 'use strict';
 
 function assureEqualPasswordFields() {
-    //alert(1);
-    jQuery('#register_form_confirm_password').on('input', function(){
-        //alert(2);
+    jQuery('#register_form_confirm_password').on('input paste', function(){
             if (this.value === document.getElementById('register_form_password').value) {
                 this.setCustomValidity("");
             }
@@ -13,11 +11,7 @@ function assureEqualPasswordFields() {
         });
 }
 
+jQuery(assureEqualPasswordFields);
 
-
-    jQuery(document).on('ready', function(){
-        //alert();
-        assureEqualPasswordFields();
-    });
 
 
