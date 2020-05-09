@@ -1,5 +1,7 @@
 dist: Xenial
-language: php
+language:
+  - php
+  - node_js
 sudo: false
 php:
   - 7.4
