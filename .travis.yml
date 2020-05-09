@@ -1,7 +1,6 @@
-dist: Xenial
+dist: bionic
 language:
   - php
-  - node_js
 sudo: false
 php:
   - 7.4
