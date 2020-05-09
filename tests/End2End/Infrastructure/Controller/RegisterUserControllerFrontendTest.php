@@ -42,7 +42,7 @@ class RegisterUserControllerFrontendTest extends PantherTestCase
 
     public function testPasswordAndConfirmPasswordFieldValidWhenSame(): void
     {
-        $client = static::createPantherClient();
+        $client = static::createPantherClient(['port' => 443], ['https' => true]);
         $crawler = $client->request('GET', '/login');
 
         $this->assertPageTitleContains('Login');
