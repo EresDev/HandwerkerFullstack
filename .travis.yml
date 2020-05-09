@@ -1,4 +1,4 @@
-dist: trusty
+dist: Xenial
 language: php
 sudo: false
 php:
