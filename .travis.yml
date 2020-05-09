@@ -6,8 +6,10 @@ php:
 addons:
   chrome: stable
 cache:
+  yarn: true
   directories:
     - "$HOME/.composer/cache/files"
+    - node_modules
 env:
   - SYMFONY_VERSION="4.3.*" DB=mysql
 
