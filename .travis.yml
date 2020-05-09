@@ -2,7 +2,7 @@ dist: trusty
 language: php
 sudo: false
 php:
-  - 7.4.4
+  - 7.4
 addons:
   chrome: stable
 cache:
