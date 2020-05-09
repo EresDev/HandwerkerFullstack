@@ -2,7 +2,7 @@ dist: trusty
 language: php
 sudo: false
 php:
-  - 7.4.5
+  - 7.4.4
 addons:
   chrome: stable
 cache:
@@ -14,8 +14,6 @@ env:
 before_install:
   - # start your web application and listen on `localhost`
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9080 http://localhost &
-script:
-  - php bin/phpunit
 services:
   - mysql
 install:
@@ -28,3 +26,6 @@ install:
   - mkdir -p config/jwt
   - openssl genpkey -out config/jwt/private.pem -aes256 -algorithm rsa -pkeyopt rsa_keygen_bits:4096 -pass pass:7834rhgi8uhgfuw834hr879329hr
   - openssl pkey -in config/jwt/private.pem -out config/jwt/public.pem -pubout -passin pass:7834rhgi8uhgfuw834hr879329hr
+
+script:
+  - php bin/phpunit
