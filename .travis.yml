@@ -17,7 +17,7 @@ hosts:
 env:
   global:
     - SYMFONY_VERSION="4.3.*" DB=mysql
-    - SITE_URL="https://hwfs.local"
+    - SITE_URL="http://hwfs.local"
     - SITE_DOMAIN="hwfs.local"
 
 before_install:
