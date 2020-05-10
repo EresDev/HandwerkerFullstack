@@ -39,7 +39,7 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        - { path: ^/, roles: !php/const App\Application\Service\Security\Role::ANONYMOUS}
-#, requires_channel: https
+        - { path: ^/, roles: !php/const App\Application\Service\Security\Role::ANONYMOUS, requires_channel: https}
+#
 #        - { path: ^/login, roles: !php/const App\Application\Service\Security\Role::ANONYMOUS }
 #        - { path: ^/auth/success, roles: !php/const App\Application\Service\Security\Role::USER }
