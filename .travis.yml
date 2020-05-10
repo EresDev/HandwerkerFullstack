@@ -1,7 +1,7 @@
 dist: Xenial
 language:
   - php
-sudo: required
+sudo: false
 php:
   - 7.4
 addons:
@@ -33,7 +33,7 @@ services:
   - mysql
 install:
   - cp .env.travis .env
-  - sudo build/install-nginx.sh
+  - build/install-nginx.sh
   - composer install
   - npm install
   - yarn encore dev
