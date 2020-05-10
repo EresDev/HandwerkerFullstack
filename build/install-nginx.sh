@@ -55,4 +55,4 @@ tpl "$DIR/fastcgi.tpl.conf" "$DIR/nginx/fastcgi.conf"
 tpl "$DIR/default-site.tpl.conf" "$DIR/nginx/sites-enabled/default-site.conf"
 
 # Start nginx.
-nginx -c "$DIR/nginx/nginx.conf" -p /home/ubuntu/nginx
+sudo nginx -c "$DIR/nginx/nginx.conf"
