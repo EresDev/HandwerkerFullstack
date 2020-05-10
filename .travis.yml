@@ -1,19 +1,23 @@
 dist: Xenial
 language:
   - php
-sudo: required
+sudo: false
 php:
   - 7.4
 addons:
   chrome: stable
+  apt:
+    packages:
+      - nginx
+      - realpath
+  hosts:
+    - hwfs.local
 cache:
   yarn: true
   directories:
     - vendor
     - "$HOME/.composer/cache/files"
     - node_modules
-hosts:
-  - hwfs.local
 env:
   global:
     - SYMFONY_VERSION="4.3.*" DB=mysql
@@ -21,23 +25,6 @@ env:
     - SITE_DOMAIN="hwfs.local"
 
 before_install:
-  - sudo apt-get install php7.0-fpm
-  - sudo apt-get install nginx
-  # start your web application and listen on `localhost`
-  # copy the Nginx configuration file for the site among the available ones from
-  # the `build` folder; the content of the Nginx configuration file I'm using is
-  # specific to WordPress (see below) so use whatever you need to use.
-  # Given the current environment configuration it will be copied to `/etc/nginx/sites-available/site.localhost`
-  - sudo cp build/travis-nginx.conf /etc/nginx/sites-available/$SITE_DOMAIN
-
-  # using sed replace the placeholder text in the Nginx configuration file to use the
-  # correct site folder path and domain
-  - sudo sed -e "s?%TRAVIS_BUILD_DIR%?$TRAVIS_BUILD_DIR?g" --in-place /etc/nginx/sites-available/$SITE_DOMAIN
-  - sudo sed -e "s?%SITE_DOMAIN%?$SITE_DOMAIN?g" --in-place /etc/nginx/sites-available/$SITE_DOMAIN
-
-  # enable the site by creating a symbolic link in the `sites-enabled` folder
-  - sudo ln -s /etc/nginx/sites-available/$SITE_DOMAIN /etc/nginx/sites-enabled/
-
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
   - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.22.4
   - export PATH="$HOME/.yarn/bin:$PATH"
@@ -46,6 +33,7 @@ services:
   - mysql
 install:
   - cp .env.travis .env
+  - build/install-nginx.sh
   - composer install
   - npm install
   - yarn encore dev
@@ -55,11 +43,7 @@ install:
   - openssl genpkey -out config/jwt/private.pem -aes256 -algorithm rsa -pkeyopt rsa_keygen_bits:4096 -pass pass:7834rhgi8uhgfuw834hr879329hr
   - openssl pkey -in config/jwt/private.pem -out config/jwt/public.pem -pubout -passin pass:7834rhgi8uhgfuw834hr879329hr
 
-before_script:
-  - sudo service php7.0-fpm restart
-  - sudo service nginx restart
-
 script:
-  - pwd
-  - curl http://hwfs.local
+  - curl -vsf 'http://hwfs.local' &> /dev/stdout
+  - cat /tmp/error.log
   - php bin/phpunit
