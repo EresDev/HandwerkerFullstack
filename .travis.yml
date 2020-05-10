@@ -8,7 +8,7 @@ addons:
   chrome: stable
   apt:
     packages:
-      - php7-fpm
+      - php7.4-fpm
       - nginx
 cache:
   yarn: true
