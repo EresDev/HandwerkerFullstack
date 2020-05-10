@@ -61,4 +61,6 @@ before_script:
   - sudo service nginx restart
 
 script:
+  - pwd
+  - curl http://hwfs.local
   - php bin/phpunit
