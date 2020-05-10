@@ -33,7 +33,7 @@ services:
   - mysql
 install:
   - cp .env.travis .env
-  - bash build/install-nginx.sh
+  - build/install-nginx.sh
   - composer install
   - npm install
   - yarn encore dev
