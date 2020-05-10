@@ -14,7 +14,7 @@
         <server name="SYMFONY_PHPUNIT_REMOVE" value="" />
         <server name="SYMFONY_PHPUNIT_VERSION" value="7.5" />
         <env name="PANTHER_CHROME_ARGUMENTS" value="--ignore-certificate-errors --disable-dev-shm-usage"/>
-        <env name="PANTHER_NO_HEADLESS" value="false"/>
+        <env name="PANTHER_NO_HEADLESS" value="true"/>
         <env name="PANTHER_NO_SANDBOX" value="false"/>
         <env name="PANTHER_EXTERNAL_BASE_URI" value="https://hwfs.local:8080"/>
     </php>
