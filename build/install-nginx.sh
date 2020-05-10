@@ -54,7 +54,7 @@ tpl "$DIR/nginx.tpl.conf" "$DIR/nginx/nginx.conf"
 tpl "$DIR/fastcgi.tpl.conf" "$DIR/nginx/fastcgi.conf"
 tpl "$DIR/default-site.tpl.conf" "$DIR/nginx/sites-enabled/default-site.conf"
 
+sudo pkill -f nginx & wait $!
+netstat -tulpn | grep --color :80
 # Start nginx.
 sudo nginx -c "$DIR/nginx/nginx.conf"
-sudo pkill -f nginx & wait $!
-sudo systemctl start nginx
