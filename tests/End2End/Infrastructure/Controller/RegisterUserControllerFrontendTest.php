@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Tests\End2End\Infrastructure\Controller;
 
+use Facebook\WebDriver\WebDriverBy;
+use Facebook\WebDriver\WebDriverKeys;
 use Symfony\Component\Panther\PantherTestCase;
 
 class RegisterUserControllerFrontendTest extends PantherTestCase
@@ -30,9 +32,12 @@ class RegisterUserControllerFrontendTest extends PantherTestCase
             ]
         );
 
-        $client->executeScript(
-            'var event = new Event("paste"); document.getElementById("register_form_confirm_password").dispatchEvent(event);'
-        );
+        $confirmPassword = $client->findElement(WebDriverBy::id('register_form_confirm_password'));
+        $confirmPassword->click();
+        $confirmPassword->sendKeys('12345678');
+
+        $confirmPassword->sendKeys(WebDriverKeys::TAB);
+
 
         $confirmPasswordFieldValidity = $client->executeScript(
             'return document.getElementById("register_form_confirm_password").validity.valid;'
