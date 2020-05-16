@@ -48,6 +48,9 @@ class RegisterUserControllerFrontendTest extends PantherTestCase
             'console.error("test test test");'
         );
 
+        var_dump( $client->manage()->getLog( 'browser' ) );
+        echo "Let us see this";
+
         $confirmPasswordFieldValidity = $client->executeScript(
             'return document.getElementById("register_form_confirm_password").validity.valid;'
         );
@@ -57,8 +60,7 @@ class RegisterUserControllerFrontendTest extends PantherTestCase
             'password and confirm password field values are different.'
         );
 
-        var_dump( $client->manage()->getLog( 'browser' ) );
-        echo "Let us see this";
+
     }
 
     public function testPasswordAndConfirmPasswordFieldValidWhenSame(): void
