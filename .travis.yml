@@ -25,9 +25,9 @@ env:
     - SITE_DOMAIN="hwfs.local"
 
 before_install:
-  - sudo add-apt-repository ppa:chris-lea/node.js
-  - sudo apt-get update
-  - sudo apt-get install nodejs
+  - nvm install --lts
+  - nvm use --lts
+  - npm --version
 
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
   - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.22.4
