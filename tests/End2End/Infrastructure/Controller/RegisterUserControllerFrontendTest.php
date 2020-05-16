@@ -32,6 +32,10 @@ class RegisterUserControllerFrontendTest extends PantherTestCase
             ]
         );
 
+        $client->executeScript(
+            'assureEqualPasswordFields();'
+        );
+
         $confirmPassword = $client->findElement(WebDriverBy::id('register_form_confirm_password'));
         $confirmPassword->click();
         $confirmPassword->sendKeys('12345678');
@@ -39,7 +43,7 @@ class RegisterUserControllerFrontendTest extends PantherTestCase
         $confirmPassword->sendKeys(WebDriverKeys::TAB);
 
         $client->executeScript(
-            'var event = new Event("change"); document.getElementById("register_form_confirm_password").dispatchEvent(event);'
+            'document.getElementById("register_form_confirm_password").dispatchEvent(event);'
         );
 
         $confirmPasswordFieldValidity = $client->executeScript(
