@@ -26,7 +26,7 @@ class RegisterUserControllerFrontendTest extends PantherTestCase
             [
                 'register_form[email]' => 'test@eresdev.com',
                 'register_form[password]' => '123456',
-                'register_form[confirm_password]' => '123456789'
+                'register_form[confirm_password]' => '123'
             ]
         );
 
