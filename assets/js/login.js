@@ -1,7 +1,7 @@
 'use strict';
 
 function assureEqualPasswordFields() {
-    jQuery('#register_form_confirm_password').on('input paste', function(){
+    jQuery('#register_form_confirm_password').on('change', function(){
             if (this.value === document.getElementById('register_form_password').value) {
                 this.setCustomValidity("");
             }

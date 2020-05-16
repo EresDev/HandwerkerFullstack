@@ -38,6 +38,9 @@ class RegisterUserControllerFrontendTest extends PantherTestCase
 
         $confirmPassword->sendKeys(WebDriverKeys::TAB);
 
+        $client->executeScript(
+            'var event = new Event("change"); document.getElementById("register_form_confirm_password").dispatchEvent(event);'
+        );
 
         $confirmPasswordFieldValidity = $client->executeScript(
             'return document.getElementById("register_form_confirm_password").validity.valid;'
