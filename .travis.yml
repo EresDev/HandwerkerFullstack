@@ -42,7 +42,7 @@ install:
   #TODO: generate SSL certificate files, do not use existing ones
   - travis/install-nginx.sh
   - composer install
-  - yarn install
+  - npm install
   - yarn encore dev
   #- yarn encore dev-server --port 8080
   - php bin/console doctrine:database:create --env=test
