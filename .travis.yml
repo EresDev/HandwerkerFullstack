@@ -39,7 +39,8 @@ services:
 install:
   - ln -s public/ htdocs #Symlink for symfony
   - cp .env.travis .env
-  - sudo /travis/install-nginx.sh
+  - cd travis
+  - install-nginx.sh
   - composer install
   - yarn install
   - yarn encore dev
