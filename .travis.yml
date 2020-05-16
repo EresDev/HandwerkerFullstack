@@ -39,7 +39,7 @@ services:
 install:
   - ln -s public/ htdocs #Symlink for symfony
   - cp .env.travis .env
-  - build/install-nginx.sh
+  - travis/install-nginx.sh
   - composer install
   - yarn install
   - yarn encore dev
@@ -51,5 +51,5 @@ install:
 
 script:
 #  - curl -vsf 'http://hwfs.local:8080' &> /dev/stdout
-  - cat public/build/app.js
+#  - cat public/travis/app.js
   - php bin/phpunit tests/End2End/Infrastructure/Controller/RegisterUserControllerFrontendTest.php --debug
