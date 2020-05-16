@@ -1,12 +1,9 @@
 dist: Xenial
 language:
   - php
-  - node_js
 sudo: required
 php:
   - 7.4
-node_js:
-  - 4.2
 addons:
   chrome: stable
   apt:
@@ -28,6 +25,7 @@ env:
     - SITE_DOMAIN="hwfs.local"
 
 before_install:
+  - sudo apt-get install nodejs
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
   - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.22.4
   - export PATH="$HOME/.yarn/bin:$PATH"
