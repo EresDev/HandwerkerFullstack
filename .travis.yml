@@ -36,8 +36,8 @@ install:
   - cp .env.travis .env
   - build/install-nginx.sh
   - composer install
-  - npm install
-  - sudo yarn encore dev
+  - yarn install
+  - yarn encore dev
   - php bin/console doctrine:database:create --env=test
   - php bin/console doctrine:schema:create --env=test
   - mkdir -p config/jwt
