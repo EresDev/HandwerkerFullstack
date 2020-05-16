@@ -37,7 +37,6 @@ before_install:
 services:
   - mysql
 install:
-  - ln -s public/ htdocs #Symlink for symfony
   - cp .env.travis .env
   - chmod +x travis/install-nginx.sh
   #TODO: generate SSL certificate files, do not use existing ones
@@ -45,6 +44,8 @@ install:
   - composer install
   - yarn install
   - yarn encore dev
+  - cd public/build
+  - ls
   - php bin/console doctrine:database:create --env=test
   - php bin/console doctrine:schema:create --env=test
   - mkdir -p config/jwt
