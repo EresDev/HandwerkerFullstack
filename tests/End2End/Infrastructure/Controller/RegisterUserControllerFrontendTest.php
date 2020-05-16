@@ -30,6 +30,8 @@ class RegisterUserControllerFrontendTest extends PantherTestCase
             ]
         );
 
+        $client->submit($form);
+
         $confirmPasswordFieldValidity = $client->executeScript(
             'return document.getElementById("register_form_confirm_password").validity.valid;'
         );
