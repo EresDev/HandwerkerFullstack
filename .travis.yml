@@ -1,9 +1,12 @@
 dist: Xenial
 language:
   - php
+  - node_js
 sudo: required
 php:
   - 7.4
+node_js:
+  - 4.2
 addons:
   chrome: stable
   apt:
