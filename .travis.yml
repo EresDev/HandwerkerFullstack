@@ -50,6 +50,5 @@ install:
 
 script:
 #  - curl -vsf 'http://hwfs.local:8080' &> /dev/stdout
-  - cat /build/app.js
-  - curl -k https://hwfs.local:8080/build/app.js
+  - cat public/build/app.js
   - php bin/phpunit tests/End2End/Infrastructure/Controller/RegisterUserControllerFrontendTest.php --debug
