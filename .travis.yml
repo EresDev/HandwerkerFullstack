@@ -46,4 +46,4 @@ install:
 script:
 #  - curl -vsf 'http://hwfs.local:8080' &> /dev/stdout
 #  - cat /tmp/error.log
-  - php bin/phpunit tests\End2End\Infrastructure\Controller\RegisterUserControllerFrontendTest.php
+  - php bin/phpunit
