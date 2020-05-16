@@ -40,6 +40,7 @@ install:
   - ln -s public/ htdocs #Symlink for symfony
   - cp .env.travis .env
   - cd travis
+  - ls
   - install-nginx.sh
   - composer install
   - yarn install
