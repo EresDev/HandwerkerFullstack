@@ -5,7 +5,7 @@ sudo: required
 php:
   - 7.4
 addons:
-#  chrome: stable
+  chrome: stable
   apt:
     packages:
       - nginx

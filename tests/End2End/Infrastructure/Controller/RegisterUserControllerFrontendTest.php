@@ -58,6 +58,7 @@ class RegisterUserControllerFrontendTest extends PantherTestCase
         );
 
         var_dump( $client->manage()->getLog( 'browser' ) );
+        echo "Let us see this";
     }
 
     public function testPasswordAndConfirmPasswordFieldValidWhenSame(): void
