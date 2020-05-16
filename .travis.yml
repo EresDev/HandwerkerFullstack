@@ -41,7 +41,7 @@ install:
   - cp .env.travis .env
   - cd travis
   - ls
-  - install-nginx.sh
+  - ./install-nginx.sh
   - composer install
   - yarn install
   - yarn encore dev
