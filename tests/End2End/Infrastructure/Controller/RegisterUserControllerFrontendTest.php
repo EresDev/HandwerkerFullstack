@@ -31,7 +31,7 @@ class RegisterUserControllerFrontendTest extends PantherTestCase
         );
 
         $client->executeScript(
-            'var event = new Event("change"); document.getElementById("register_form_confirm_password").dispatchEvent(event);'
+            'var event = new Event("input"); document.getElementById("register_form_confirm_password").dispatchEvent(event);'
         );
 
         $confirmPasswordFieldValidity = $client->executeScript(
