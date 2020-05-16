@@ -25,6 +25,7 @@ env:
     - SITE_DOMAIN="hwfs.local"
 
 before_install:
+  #update Nodejs
   - nvm install --lts
   - nvm use --lts
   - npm --version
@@ -49,6 +50,6 @@ install:
 
 script:
 #  - curl -vsf 'http://hwfs.local:8080' &> /dev/stdout
-  - cat build/app.js
-  - curl https://hwfs.local:8080/build/app.js
+  - cat /build/app.js
+  - curl -k https://hwfs.local:8080/build/app.js
   - php bin/phpunit tests/End2End/Infrastructure/Controller/RegisterUserControllerFrontendTest.php --debug
