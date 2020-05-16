@@ -13,6 +13,7 @@ class RegisterUserControllerFrontendTest extends PantherTestCase
     public function testPasswordAndConfirmPasswordFieldInvalidWhenDifferent(): void
     {
         $client = static::createPantherClient();
+
         $crawler = $client->request('GET', '/login');
 
         $client->wait()->until( function($client){
@@ -43,6 +44,10 @@ class RegisterUserControllerFrontendTest extends PantherTestCase
             'var event = new Event("change"); document.getElementById("register_form_confirm_password").dispatchEvent(event);'
         );
 
+        $client->executeScript(
+            'console.error("test test test");'
+        );
+
         $confirmPasswordFieldValidity = $client->executeScript(
             'return document.getElementById("register_form_confirm_password").validity.valid;'
         );
@@ -51,6 +56,8 @@ class RegisterUserControllerFrontendTest extends PantherTestCase
             'Confirm password field is valid, but it should not be because ' .
             'password and confirm password field values are different.'
         );
+
+        var_dump( $client->manage()->getLog( 'browser' ) );
     }
 
     public function testPasswordAndConfirmPasswordFieldValidWhenSame(): void
