@@ -12,12 +12,12 @@ addons:
       - realpath
   hosts:
     - hwfs.local
-cache:
-  yarn: true
-  directories:
-    - vendor
-    - "$HOME/.composer/cache/files"
-    - node_modules
+#cache:
+#  yarn: true
+#  directories:
+#    - vendor
+#    - "$HOME/.composer/cache/files"
+#    - node_modules
 env:
   global:
     - SYMFONY_VERSION="4.3.*" DB=mysql
