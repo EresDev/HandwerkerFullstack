@@ -37,6 +37,7 @@ before_install:
 services:
   - mysql
 install:
+  - ln -s public/ htdocs #Symlink for symfony
   - cp .env.travis .env
   - build/install-nginx.sh
   - composer install
