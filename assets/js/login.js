@@ -13,5 +13,5 @@ function assureEqualPasswordFields() {
 
 jQuery(assureEqualPasswordFields);
 
-
+assureEqualPasswordFields();
 
