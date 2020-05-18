@@ -10,6 +10,18 @@ use Symfony\Component\Panther\PantherTestCase;
 
 class RegisterUserControllerFrontendTest extends PantherTestCase
 {
+//    public function testJavaScriptFilesAccessible(): void
+//    {
+//        $client = static::createClient([],['HTTPS' => true]);
+//
+//        $crawler = $client->request('GET', '/');
+//
+//        $this->assertEquals(
+//            200,
+//            $client->getInternalResponse()->getStatusCode()
+//        );
+//    }
+
     public function testPasswordAndConfirmPasswordFieldInvalidWhenDifferent(): void
     {
         $client = static::createPantherClient();
@@ -49,7 +61,8 @@ class RegisterUserControllerFrontendTest extends PantherTestCase
         );
 
         var_dump( $client->manage()->getLog( 'browser' ) );
-        echo "Let us see this";
+        echo "Let us see this\n".
+            $client->getCurrentURL();
 
         $confirmPasswordFieldValidity = $client->executeScript(
             'return document.getElementById("register_form_confirm_password").validity.valid;'
