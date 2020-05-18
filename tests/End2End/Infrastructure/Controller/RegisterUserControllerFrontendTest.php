@@ -17,8 +17,7 @@ class RegisterUserControllerFrontendTest extends PantherTestCase
         $crawler = $client->request('GET', '/build/app.js');
 
          $this->assertTrue(
-            -1 ===
-            $client->getMaxRedirects(),
+            false,
             $client->getInternalResponse()->getContent()
         );
     }
