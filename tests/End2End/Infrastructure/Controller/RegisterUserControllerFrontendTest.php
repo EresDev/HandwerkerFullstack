@@ -12,9 +12,9 @@ class RegisterUserControllerFrontendTest extends PantherTestCase
 {
 //    public function testJavaScriptFilesAccessible(): void
 //    {
-//        $client = static::createClient([],['HTTPS' => true]);
+//        $client = static::createClient();
 //
-//        $crawler = $client->request('GET', '/');
+//        $crawler = $client->request('GET', '/build/app.js');
 //
 //        $this->assertEquals(
 //            200,

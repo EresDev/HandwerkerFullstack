@@ -55,4 +55,5 @@ install:
 script:
   #- curl -k 'https://hwfs.local/public/build/app.js'
   #- cat webpack.config.js
+  - ls var/log
   - php bin/phpunit #tests/End2End/Infrastructure/Controller/RegisterUserControllerFrontendTest.php --debug
