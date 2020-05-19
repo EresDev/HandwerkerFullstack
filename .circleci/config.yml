@@ -40,8 +40,9 @@ jobs:
           name: Run devilbox
           command: |
             cd devilbox
-            pwd
-
+            mv ~/project/.circleci/.env ~/devilbox/.env
+            docker-compose up -d php mysql httpd
+            ./shell.sh
 
 #      - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
 #      - run: sudo docker-php-ext-install zip
