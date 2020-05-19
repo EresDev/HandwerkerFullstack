@@ -39,8 +39,7 @@ jobs:
       - run:
           name: Run devilbox
           command: |
-            cd devilbox
-            mv ~/project/.circleci/.env ~/devilbox/.env
+            sudo mv ~/project/.circleci/.env ~/devilbox/.env
             docker-compose up -d php mysql httpd
             ./shell.sh
 
