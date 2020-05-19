@@ -48,6 +48,7 @@ jobs:
       - run:
           name: Install PHP Extensions
           command: |
+            sudo apt-get install a2enmod
             sudo a2enmod pdo_mysql
 
       - run:
