@@ -30,9 +30,14 @@ jobs:
           command: |
             git clone https://github.com/cytopia/devilbox
             cd devilbox
-            cp env-example .env
-            sed -i -e 's/NEW_UID=1000/NEW_UID=3434/g' .env
-            sed -i -e 's/NEW_GID=1000/NEW_GID=3434/g' .env
+            mv ~/project/.circleci/.env ~/devilbox/.env
+#            sed -i -e 's/NEW_UID=1000/NEW_UID=3434/g' .env
+#            sed -i -e 's/NEW_GID=1000/NEW_GID=3434/g' .env
+            docker-compose up -d php mysql httpd
+            ./shell.sh
+            mkdir hwfs
+            cd hwfs
+
 #      - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
 #      - run: sudo docker-php-ext-install zip
 
