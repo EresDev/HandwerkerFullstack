@@ -48,7 +48,9 @@ jobs:
       - run:
           name: Install PHP Extensions
           command: |
-            sudo docker-php-ext-install pdo pdo_mysql xdebug
+            sudo apt-get install php7.4-mysql
+            sudo phpenmod pdo_mysql
+
       - run:
           name: Install Yarn
           command: |
