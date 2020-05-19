@@ -10,17 +10,49 @@ use Symfony\Component\Panther\PantherTestCase;
 
 class RegisterUserControllerFrontendTest extends PantherTestCase
 {
-//    public function testJavaScriptFilesAccessible(): void
-//    {
-//        $client = static::createPantherClient();
-//
-//        $crawler = $client->request('GET', '/build/app.js');
-//
-//         $this->assertTrue(
-//            false,
-//            $client->getInternalResponse()->getContent()
-//        );
-//    }
+    public function testExistingJavaScriptFilesAccessible(): void
+    {
+        /**
+         * We cannot test HTTP Status Code
+         * due to its unavailability in Selenium on nginx or apache
+         *
+         * We cannot test HTTP Status Code
+         * on built-in server due to unavilable of JS files in it
+         *
+         * Let us just test some of JavaScript code presence in content
+         */
+        $client = static::createPantherClient();
+
+        $jsFile = '/build/app.js';
+
+        $crawler = $client->request('GET', $jsFile);
+
+        $this->assertContains(
+            '(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["app"],{',
+            $client->getInternalResponse()->getContent()
+        );
+
+    }
+
+    public function testNonExistingJavaScriptFilesAccess(): void
+    {
+        /**
+         * We cannot test HTTP Status Code
+         * due to its unavailability in Selenium on nginx or apache
+         *
+         * We cannot test HTTP Status Code
+         * on built-in server due to unavilable of JS files in it
+         *
+         * Let us just test title
+         */
+        $client = static::createPantherClient();
+
+        $jsFile = '/build/app-non-existing.js';
+
+        $crawler = $client->request('GET', $jsFile);
+
+        $this->assertPageTitleContains('No route found for "GET '.$jsFile.'" (404 Not Found)');
+    }
 
     public function testPasswordAndConfirmPasswordFieldInvalidWhenDifferent(): void
     {
