@@ -37,7 +37,7 @@ jobs:
 #            cd hwfs
 #            pwd
       - run:
-          name: Install devilbox
+          name: Run devilbox
           command: |
             cd devilbox
             pwd
