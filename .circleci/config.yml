@@ -42,6 +42,7 @@ jobs:
           command: |
             ls
             sudo mv ~/project/.circleci/.env ~/devilbox/.env
+            cd ~/devilbox
             docker-compose up -d php mysql httpd
             ./shell.sh
 
