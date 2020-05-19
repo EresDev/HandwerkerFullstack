@@ -31,8 +31,6 @@ jobs:
             git clone https://github.com/cytopia/devilbox
             cd devilbox
             mv ~/project/.circleci/.env ~/devilbox/.env
-#            sed -i -e 's/NEW_UID=1000/NEW_UID=3434/g' .env
-#            sed -i -e 's/NEW_GID=1000/NEW_GID=3434/g' .env
             docker-compose up -d php mysql httpd
             ./shell.sh
             mkdir hwfs
