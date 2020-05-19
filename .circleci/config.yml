@@ -34,9 +34,9 @@ jobs:
             sudo apt-get install -y libzip-dev
             sudo apt-get install -y zlib1g-dev libicu-dev g++
             sudo DEBIAN_FRONTEND=noninteractive apt-get -y install mariadb-server
-            sudo service mysql restart
-            sudo mysql -e "SET PASSWORD FOR root@localhost = PASSWORD('rpassword');FLUSH PRIVILEGES;"
-            sudo /usr/bin/mysql_secure_installation
+#            sudo service mysql restart
+#            sudo mysql -e "SET PASSWORD FOR root@localhost = PASSWORD('rpassword');FLUSH PRIVILEGES;"
+#            sudo /usr/bin/mysql_secure_installation
 
 
 #      - run:
