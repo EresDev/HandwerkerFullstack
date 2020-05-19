@@ -7,7 +7,8 @@ jobs:
   build:
     docker:
       # Specify the version you desire here
-      - image: devilbox/php-fpm
+      - image: devilbox/php-fpm:7.4-work-0.95
+
         environment:
           MYSQL_ROOT_PASSWORD: ''
           MYSQL_HOST: 127.0.0.1
