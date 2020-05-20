@@ -67,14 +67,8 @@ jobs:
             openssl genpkey -out config/jwt/private.pem -aes256 -algorithm rsa -pkeyopt rsa_keygen_bits:4096 -pass pass:7834rhgi8uhgfuw834hr879329hr
             openssl pkey -in config/jwt/private.pem -out config/jwt/public.pem -pubout -passin pass:7834rhgi8uhgfuw834hr879329hr
       - run:
-          name: Generate Self-signed SSL
-          command: |
-            sudo openssl req -nodes -newkey rsa:2048 -keyout ~/project/.circleci/nginx-selfsigned.key -out ~/project/.circleci/nginx-selfsigned.csr -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=hwfs.local"
-      - run:
           name: ENV  setup
           command: |
-            cd ~/project/.circleci
-            ls
             cd ~/project
             cp .env.circleci .env
             sudo mv ~/project/.circleci/hwfs.local /etc/nginx/sites-enabled/
