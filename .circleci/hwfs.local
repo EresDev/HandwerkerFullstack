@@ -23,7 +23,7 @@ server {
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
         fastcgi_index index.php;
         include fastcgi_params;
-      }
+    }
 
     location ~ /\.(?:ht|git|svn) {
         deny all;

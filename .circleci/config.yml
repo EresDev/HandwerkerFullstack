@@ -51,8 +51,8 @@ jobs:
             cp .env.circleci .env
             sudo mv ~/project/.circleci/hwfs.local /etc/nginx/sites-available/
             sudo -- sh -c -e "echo '127.0.0.1   hwfs.local' >> /etc/hosts";
-            sudo service nginx restart
             sudo service php7.4-fpm restart
+            sudo service nginx restart
       - run:
             name: Install Project
             command: |
