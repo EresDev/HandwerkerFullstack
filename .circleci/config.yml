@@ -29,7 +29,6 @@ jobs:
           name: Preview versions
           command: |
             sudo apt-get update
-            sudo service mysql start
             php --version
             node --version
             yarn --version
