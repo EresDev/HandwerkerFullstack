@@ -2,11 +2,11 @@
 
 [![CircleCI](https://circleci.com/gh/EresDev/HandwerkerFullstack.svg?style=shield)](https://app.circleci.com/pipelines/github/EresDev/HandwerkerFullstack)
 
-A web application to post jobs to find craftsmen online. It includes authentication, authorization, internationalization, and CRUD for Jobs with Categories. 
+A web application to find craftsmen online. It is a fullstack application based on Symfony and its components.
 
-The purpose of the application was to practice Hexagonal Architecture, Chicago Style Test-driven development, and CQRS. 
+It includes authentication, authorization, internationalization, and CRUD for Jobs with Categories. 
 
-It is based on Symfony 4, PHP 7.4. The response format of the API is based on [JSend specification](https://github.com/omniti-labs/jsend). 
+It included unit tests and end to end tests with Symfony panther based on php-webdriver (Selenium).
 
 ## Prerequisites
 - PHP 7.4+
@@ -21,6 +21,8 @@ git clone https://github.com/EresDev/Handwerker
 - Install it.
 ```
 composer install
+yarn install
+yarn encore dev
 ```
 - Create MySQL database if you have not already created.
 ```
