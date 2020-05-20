@@ -47,10 +47,9 @@ jobs:
       - run:
           name: ENV  setup
           command: |
-            sudo apt-get install -y php7.4-cli php7.4-cgi php7.4-fpm
             cd ~/project
             cp .env.circleci .env
-            sudo mv ~/project/.circleci/hwfs.local.conf /etc/nginx/sites-available/
+            sudo mv ~/project/.circleci/hwfs.local /etc/nginx/sites-available/
             sudo -- sh -c -e "echo '127.0.0.1   hwfs.local' >> /etc/hosts";
             sudo service nginx restart
       - run:
