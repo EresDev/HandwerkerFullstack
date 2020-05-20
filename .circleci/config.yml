@@ -40,7 +40,7 @@ jobs:
             composer install
             yarn install
             yarn encore dev
-            sudo apt-get remove -y mariadb-server mariadb-client
+
       - run:
           name: Create Database
           command: |
