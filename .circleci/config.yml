@@ -75,8 +75,7 @@ jobs:
           name: Run Tests
           command: |
             dockerize -wait tcp://localhost:3306 -timeout 1m
-            curl -k https://hwfs.local
-#            php bin/phpunit
+            php bin/phpunit
 
 #      - run:
 #          name: Install nginx
