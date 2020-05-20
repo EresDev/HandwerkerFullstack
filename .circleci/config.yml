@@ -30,6 +30,28 @@ jobs:
           command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
           environment:
             DOCKERIZE_VERSION: v0.3.0
+
+      # Cache dependencies
+      - restore_cache:
+          keys:
+            # "composer.lock" can be used if it is committed to the repo
+            - v1-dependencies-{{ checksum "composer.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+      - save_cache:
+          key: v1-dependencies-{{ checksum "composer.json" }}
+          paths:
+            - ./vendor
+      - restore_cache:
+          keys:
+            - node-v1-{{ checksum "package.json" }}
+            - node-v1-
+      - save_cache:
+          key: node-v1-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+
+      #Now run steps to setup and run tests
       - run:
           name: Preview versions
           command: |
@@ -60,7 +82,7 @@ jobs:
             name: Install Project
             command: |
               cd ~/project
-              composer install
+              composer install -n --prefer-dist
               yarn install
               yarn encore dev
 
@@ -77,24 +99,3 @@ jobs:
             dockerize -wait tcp://localhost:3306 -timeout 1m
             php bin/phpunit
 
-
-      # Download and cache dependencies
-#      - restore_cache:
-#          keys:
-#            # "composer.lock" can be used if it is committed to the repo
-#            - v1-dependencies-{{ checksum "composer.json" }}
-#            # fallback to using the latest cache if no exact match is found
-#            - v1-dependencies-
-#      - save_cache:
-#          key: v1-dependencies-{{ checksum "composer.json" }}
-#          paths:
-#            - ./vendor
-#      - restore_cache:
-#          keys:
-#            - node-v1-{{ checksum "package.json" }}
-#            - node-v1-
-#      - save_cache:
-#          key: node-v1-{{ checksum "package.json" }}
-#          paths:
-#            - node_modules
-#
