@@ -77,64 +77,6 @@ jobs:
             dockerize -wait tcp://localhost:3306 -timeout 1m
             php bin/phpunit
 
-#      - run:
-#          name: Install nginx
-#          command: |
-#            sudo apt -y install nginx
-#
-#      - run:
-#          name: Install systemd
-#          command: |
-#            sudo apt-get install -y systemd
-#
-#      - run:
-#          name: Install MySQL
-#          command: |
-#            sudo apt-get install -y mariadb-server mariadb-client
-#            ~/project/.circleci/mysql_install.sh
-
-#      - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
-#      - run: sudo docker-php-ext-install zip
-
-#      - run:
-#          name: Install things we need
-#          command: |
-#            sudo apt-get update
-#            sudo apt-get install -y libzip-dev
-#            sudo apt-get install -y zlib1g-dev libicu-dev g++
-#            sudo DEBIAN_FRONTEND=noninteractive apt-get -y install mariadb-server
-#            sudo service mysql restart
-#            sudo mysql -e "SET PASSWORD FOR root@localhost = PASSWORD('rpassword');FLUSH PRIVILEGES;"
-#            sudo mysqladmin -u root -p '' password ''
-#            sudo /usr/bin/mysql_secure_installation
-
-
-#      - run:
-#          name: Fix MySQL socket config
-#          command: |
-#            sudo sh -c "echo 'pdo_mysql.default_socket=/var/run/mysqld/mysqld.sock' > /usr/local/etc/php/conf.d/pdo.ini"
-
-#      - run:
-#          name: Install PHP Extensions
-#          command: |
-##            sudo apt-get install -y phpenmod
-#            sudo a2enmod pdo_mysql
-#
-#      - run:
-#          name: Install Yarn
-#          command: |
-#            curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-#            echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-#            sudo apt update && sudo apt install yarn
-#      - run:
-#          name: Start database server
-#          command: |
-#            sudo service mysql start
-
-#      - run:
-#          name: Create non-admin user
-#          command: |
-#            sudo mysql -u root -e "CREATE user myuser IDENTIFIED BY 'password';
 
       # Download and cache dependencies
 #      - restore_cache:
@@ -143,9 +85,6 @@ jobs:
 #            - v1-dependencies-{{ checksum "composer.json" }}
 #            # fallback to using the latest cache if no exact match is found
 #            - v1-dependencies-
-#
-#      - run: composer install -n --prefer-dist
-#
 #      - save_cache:
 #          key: v1-dependencies-{{ checksum "composer.json" }}
 #          paths:
@@ -154,19 +93,8 @@ jobs:
 #          keys:
 #            - node-v1-{{ checksum "package.json" }}
 #            - node-v1-
-#      - run: yarn install
 #      - save_cache:
 #          key: node-v1-{{ checksum "package.json" }}
 #          paths:
 #            - node_modules
 #
-#      - run:
-#          name: Create database and schema
-#          command: |
-#            php bin/console doctrine:database:create
-#            php bin/console doctrine:schema:create
-#
-#      - run:
-#          name: Run tests
-#          command: |
-#            php bin/console phpunit unit/
