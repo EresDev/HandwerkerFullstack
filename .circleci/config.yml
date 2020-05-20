@@ -50,6 +50,7 @@ jobs:
             cd ~/project
             cp .env.circleci .env
             sudo mv ~/project/.circleci/hwfs.local /etc/nginx/sites-enabled/
+            sudo cp sites-enabled/hwfs.local sites-available/hwfs.local
             sudo -- sh -c -e "echo '127.0.0.1   hwfs.local' >> /etc/hosts";
             sudo service nginx stop
             sudo service php7.4-fpm stop
