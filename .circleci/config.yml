@@ -31,9 +31,6 @@ jobs:
           environment:
             DOCKERIZE_VERSION: v0.3.0
       - run:
-          name: Wait for db
-          command: dockerize -wait tcp://localhost:3306 -timeout 1m
-      - run:
           name: Preview versions
           command: |
             sudo apt-get update
@@ -63,12 +60,14 @@ jobs:
       - run:
           name: Create Database
           command: |
+            dockerize -wait tcp://localhost:3306 -timeout 1m
             php bin/console doctrine:database:create
             php bin/console doctrine:schema:create
 
       - run:
           name: Run Tests
           command: |
+            dockerize -wait tcp://localhost:3306 -timeout 1m
             php bin/phpunit
 
 #      - run:
