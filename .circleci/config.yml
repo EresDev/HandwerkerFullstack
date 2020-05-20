@@ -40,12 +40,17 @@ jobs:
             openssl genpkey -out config/jwt/private.pem -aes256 -algorithm rsa -pkeyopt rsa_keygen_bits:4096 -pass pass:7834rhgi8uhgfuw834hr879329hr
             openssl pkey -in config/jwt/private.pem -out config/jwt/public.pem -pubout -passin pass:7834rhgi8uhgfuw834hr879329hr
       - run:
-          name: Install Project
+          name: ENV file setup
           command: |
             cd ~/project
-            composer install
-            yarn install
-            yarn encore dev
+            cp .env.circleci .env
+      - run:
+            name: Install Project
+            command: |
+              cd ~/project
+              composer install
+              yarn install
+              yarn encore dev
 
       - run:
           name: Create Database
