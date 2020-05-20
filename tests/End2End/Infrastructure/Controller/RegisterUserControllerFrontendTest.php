@@ -88,16 +88,6 @@ class RegisterUserControllerFrontendTest extends PantherTestCase
             'var event = new Event("change"); document.getElementById("register_form_confirm_password").dispatchEvent(event);'
         );
 
-        $client->executeScript(
-            'console.error("test test test");'
-        );
-
-        var_dump( $client->manage()->getLog( 'browser' ) );
-        echo "Let us see this\n".
-            $client->getCurrentURL();
-
-        echo $client->getInternalResponse()->getContent();
-
         $confirmPasswordFieldValidity = $client->executeScript(
             'return document.getElementById("register_form_confirm_password").validity.valid;'
         );
@@ -109,31 +99,31 @@ class RegisterUserControllerFrontendTest extends PantherTestCase
 
 
     }
-//
-//    public function testPasswordAndConfirmPasswordFieldValidWhenSame(): void
-//    {
-//        $client = static::createPantherClient();
-//        $crawler = $client->request('GET', '/login');
-//
-//        $this->assertPageTitleContains('Login');
-//
-//        $confirmPasswordFieldValidity = $client->executeScript(
-//            'return document.getElementById(\'register_form_confirm_password\').validity.valid;'
-//        );
-//        $this->assertFalse($confirmPasswordFieldValidity);
-//
-//        $form = $crawler->filter('form[name=register_form]')->form();
-//        $form->setValues(
-//            [
-//                'register_form[email]' => 'test@eresdev.com',
-//                'register_form[password]' => '1234567',
-//                'register_form[confirm_password]' => '1234567'
-//            ]
-//        );
-//
-//        $confirmPasswordFieldValidity = $client->executeScript(
-//            'return document.getElementById("register_form_confirm_password").validity.valid;'
-//        );
-//        $this->assertTrue($confirmPasswordFieldValidity);
-//    }
+
+    public function testPasswordAndConfirmPasswordFieldValidWhenSame(): void
+    {
+        $client = static::createPantherClient();
+        $crawler = $client->request('GET', '/login');
+
+        $this->assertPageTitleContains('Login');
+
+        $confirmPasswordFieldValidity = $client->executeScript(
+            'return document.getElementById(\'register_form_confirm_password\').validity.valid;'
+        );
+        $this->assertFalse($confirmPasswordFieldValidity);
+
+        $form = $crawler->filter('form[name=register_form]')->form();
+        $form->setValues(
+            [
+                'register_form[email]' => 'test@eresdev.com',
+                'register_form[password]' => '1234567',
+                'register_form[confirm_password]' => '1234567'
+            ]
+        );
+
+        $confirmPasswordFieldValidity = $client->executeScript(
+            'return document.getElementById("register_form_confirm_password").validity.valid;'
+        );
+        $this->assertTrue($confirmPasswordFieldValidity);
+    }
 }
