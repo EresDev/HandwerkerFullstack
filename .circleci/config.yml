@@ -69,8 +69,7 @@ jobs:
       - run:
           name: Generate Self-signed SSL
           command: |
-            cd ~/project/.circleci
-            sudo openssl req -nodes -newkey rsa:2048 -keyout nginx-selfsigned.key -out nginx-selfsigned.csr -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=hwfs.local"
+            sudo openssl req -nodes -newkey rsa:2048 -keyout ~/project/.circleci/nginx-selfsigned.key -out ~/project/.circleci/nginx-selfsigned.csr -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=hwfs.local"
       - run:
           name: ENV  setup
           command: |
