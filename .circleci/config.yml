@@ -25,14 +25,32 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install PHP
+          name: Preview versions
           command: |
             sudo apt-get update
+            sudo service mysql start
             php --version
-            mysql -version
             node --version
             yarn --version
-#            sudo apt -y install software-properties-common
+      - run:
+          name: Install Project
+          command: |
+            cd ~/project
+            composer install
+            yarn install
+            yarn encore dev
+
+      - run:
+          name: Create Database
+          command: |
+            php bin/console doctrine:database:create
+            php bin/console doctrine:schema:create
+
+      - run:
+          name: Run Tests
+          command: |
+            php bin/phpunit
+      #            sudo apt -y install software-properties-common
 #            sudo add-apt-repository -y ppa:ondrej/php
 #            sudo apt-get update
 #            sudo apt -y install php7.4
