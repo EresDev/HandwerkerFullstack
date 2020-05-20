@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # Specify the version you desire here
-      - image: cimg/base:2020.01
+      - image: eresdev/hwfs-stack
 
         environment:
           MYSQL_ROOT_PASSWORD: ''
@@ -28,27 +28,7 @@ jobs:
           name: Install PHP
           command: |
             sudo apt-get update
-            sudo apt -y install software-properties-common
-            sudo add-apt-repository -y ppa:ondrej/php
-            sudo apt-get update
-            sudo apt -y install php7.4
-            sudo apt-get install -y php7.4-{bcmath,bz2,intl,gd,mbstring,mysql,zip}
 
-      - run:
-          name: Install nginx
-          command: |
-            sudo apt -y install nginx
-
-      - run:
-          name: Install systemd
-          command: |
-            sudo apt-get install -y systemd
-
-      - run:
-          name: Install MySQL
-          command: |
-            sudo apt-get install -y mariadb-server mariadb-client
-            ~/project/.circleci/mysql_install.sh
 
 #      - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
 #      - run: sudo docker-php-ext-install zip
