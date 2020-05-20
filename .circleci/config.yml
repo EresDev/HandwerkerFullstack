@@ -24,7 +24,8 @@ jobs:
 
     steps:
       - checkout
-      - setup_remote_docker
+      - setup_remote_docker:
+          docker_layer_caching: true
       - run:
           name: Install devilbox
           command: |
@@ -42,9 +43,16 @@ jobs:
           command: |
             ls
             sudo mv ~/project/.circleci/.env ~/devilbox/.env
+            mkdir ~/devilbox/data/www/hwfs
+            mv ~/project/* ~/devilbox/data/www/hwfs/
             cd ~/devilbox
             docker-compose up -d php mysql httpd
             ./shell.sh
+            cd hwfs
+            composer install
+            yarn install
+            yarn encore dev
+            php bin/console phpunit unit/
 
 #      - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
 #      - run: sudo docker-php-ext-install zip
