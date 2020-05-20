@@ -73,22 +73,24 @@ jobs:
       - run:
           name: ENV  setup
           command: |
-              cd ~/project
-              cp .env.circleci .env
-              sudo mv ~/project/.circleci/hwfs.local /etc/nginx/sites-enabled/
-              sudo -- sh -c -e "echo '127.0.0.1   hwfs.local' >> /etc/hosts";
-              sudo service nginx stop
-              sudo service php7.4-fpm stop
-              sudo service php7.4-fpm stop
-              sudo service php7.4-fpm start
-              sudo service nginx start
+            cd ~/project/.circleci
+            ls
+            cd ~/project
+            cp .env.circleci .env
+            sudo mv ~/project/.circleci/hwfs.local /etc/nginx/sites-enabled/
+            sudo -- sh -c -e "echo '127.0.0.1   hwfs.local' >> /etc/hosts";
+            sudo service nginx stop
+            sudo service php7.4-fpm stop
+            sudo service php7.4-fpm stop
+            sudo service php7.4-fpm start
+            sudo service nginx start
       - run:
-            name: Install Project
-            command: |
-              cd ~/project
-              composer install -n --prefer-dist
-              yarn install
-              yarn encore dev
+          name: Install Project
+          command: |
+            cd ~/project
+            composer install -n --prefer-dist
+            yarn install
+            yarn encore dev
 
       - run:
           name: Create Database
