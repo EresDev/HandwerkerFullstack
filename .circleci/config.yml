@@ -46,12 +46,13 @@ jobs:
             mv ~/project/* ~/devilbox/data/www/hwfs/
             cd ~/devilbox
             docker-compose up -d php mysql httpd
-            ./shell.sh
-            cd hwfs
-            composer install
-            yarn install
-            yarn encore dev
-            php bin/console phpunit unit/
+            docker-compose exec --user devilbox php bash -c "cd hwfs && composer install"
+#            ./shell.sh
+#            cd hwfs
+#            composer install
+#            yarn install
+#            yarn encore dev
+#            php bin/console phpunit unit/
 
 #      - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
 #      - run: sudo docker-php-ext-install zip
