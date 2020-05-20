@@ -29,6 +29,9 @@ jobs:
           command: |
             sudo apt-get update
             php --version
+            mysql -version
+            node --version
+            yarn --version
 #            sudo apt -y install software-properties-common
 #            sudo add-apt-repository -y ppa:ondrej/php
 #            sudo apt-get update
