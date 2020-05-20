@@ -48,7 +48,7 @@ jobs:
           name: Install MySQL
           command: |
             sudo apt-get install -y mariadb-server mariadb-client
-            cat ~/project/.circleci/mariadb_installation.txt | mysql_secure_installation 2>/dev/null
+            echo -e "\n\ngdL9ts64ZuR\ngdL9ts64ZuR\n\n\nn\n\n " | mysql_secure_installation 2>/dev/null
 
 
 #      - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
