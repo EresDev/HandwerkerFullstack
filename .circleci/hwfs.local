@@ -6,8 +6,8 @@ server {
     root /home/circleci/project/public;
 
 	ssl on;
-    ssl_certificate /home/circleci/project/.circleci/certificate.crt;
-    ssl_certificate_key /home/circleci/project/.circleci/privateKey.key;
+    ssl_certificate /home/circleci/project/.circleci/nginx-selfsigned.crt;
+    ssl_certificate_key /home/circleci/project/.circleci/nginx-selfsigned.key;
 
     location / {
         # try to serve file directly, fallback to index.php
