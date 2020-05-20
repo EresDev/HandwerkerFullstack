@@ -41,12 +41,12 @@ jobs:
           name: Run devilbox
           command: |
             ls
-            sudo mv ~/project/.circleci/.env ~/devilbox/.env
+            mv ~/project/.circleci/.env ~/devilbox/.env
             mkdir ~/devilbox/data/www/hwfs
             mv ~/project/* ~/devilbox/data/www/hwfs/
             cd ~/devilbox
-            docker-compose up -d php mysql httpd
-            docker-compose exec --user devilbox php bash -c "cd hwfs && composer install"
+#            docker-compose up -d php mysql httpd
+#            docker-compose exec --user devilbox php bash -c "cd hwfs && composer install"
 #            ./shell.sh
 #            cd hwfs
 #            composer install
