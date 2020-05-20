@@ -3,13 +3,13 @@ server {
     listen [::]:443;
 
     server_name hwfs.local;
-    root ~/project/public;
+    root /home/circleci/project/public;
     index index.php;
     client_max_body_size 100m;
 
     ssl on;
-    ssl_certificate ~/project/.circleci/certificate.crt;
-    ssl_certificate_key ~/project/.circleci/privateKey.key;
+    ssl_certificate /home/circleci/project/.circleci/certificate.crt;
+    ssl_certificate_key /home/circleci/project/.circleci/privateKey.key;
 
     location / {
         try_files $uri $uri/ /index.php$is_args$args;
