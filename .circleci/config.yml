@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # Specify the version you desire here
-      - image: eresdev/hwfs-stack
+      - image: arslanafzal321/hwfs-stack
 
         environment:
           MYSQL_ROOT_PASSWORD: ''
