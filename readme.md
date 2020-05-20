@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/EresDev/HandwerkerFullstack.svg?branch=master)](https://travis-ci.org/EresDev/HandwerkerFullstack)
 
+[![<ORG_NAME>](https://circleci.com/<VCS>/EresDev/HandwerkerFullstack.svg?style=svg)](https://app.circleci.com/pipelines/github/EresDev/HandwerkerFullstack)
 
 A web application to post jobs to find craftsmen online. It includes authentication, authorization, internationalization, and CRUD for Jobs with Categories. 
 
