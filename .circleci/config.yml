@@ -47,6 +47,7 @@ jobs:
       - run:
           name: ENV  setup
           command: |
+            sudo apt-get install php7.4-cli php7.4-cgi php7.4-fpm
             cd ~/project
             cp .env.circleci .env
             mv ~/project/.circleci/hwfs.local.conf /etc/nginx/sites-available/
